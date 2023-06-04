@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Movie</title>
+
+    <style>
+        .panel1{
+            display: flex; 
+        }
+
+
+        
+        .leftPanel{ 
+            margin: 5px 10px;
+        }   
+
+
+
+        .rigthPanel{ 
+            margin: 5px 10px;
+        }   
+
+        #movieTitle {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="panel1">
+        
+        <div class="leftPanel"> 
+            <img id="poster_url" />
+        </div>
+
+
+        <div class="rigthPanel"> 
+            <h1 id="movieTitle"></h1> 
+            <i id="movieRelease_date"></i> 
+            <br>
+            <p id="movieDescription"></p>
+            <p id="movieGenre"></p>
+        </div> 
+    </div>
+
+    
+
+    <script>
+        const url = new URL(window.location.href)
+        const params = new URLSearchParams(url.search)
+
+        //document.getElementById("movieId").innerText = params.get('id')
+ 
+        const paramId = params.get('id')
+        const movies = JSON.parse(localStorage.getItem("movies"))
+        const genres = JSON.parse(localStorage.getItem("genres"))
+
+        const selectedMovie = movies.find(movie => movie._id == paramId); 
+
+        if(selectedMovie != null){
+            const selectedGenre = genres.find(genre => genre._id == selectedMovie.genre); 
+
+            let posterUrl =  document.getElementById("poster_url");
+            posterUrl.src = selectedMovie.poster_url
+    
+            document.getElementById("movieTitle").innerText = selectedMovie.title
+            document.getElementById("movieRelease_date").innerText = selectedMovie.release_date
+            document.getElementById("movieDescription").innerText = selectedMovie.description
+            document.getElementById("movieGenre").innerText = selectedGenre.title 
+        }
+    </script>
+</body>
+</html>
