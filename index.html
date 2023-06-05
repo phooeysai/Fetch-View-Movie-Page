@@ -182,7 +182,7 @@
     <!-- JavaScript code -->
     <script>
         // API URL for CRUD operations
-        const url = 'https://crudcrud.com/api/c913af6f6cbc417e88b6a139cacf8717'
+        const url = 'https://crudcrud.com/api/480bca49efc147fd84a85cc1c279a2dd'
 
         // Function to get genres from API or localStorage
         const getGenres = async () => {
@@ -494,7 +494,7 @@
 
                     // Remove genres from localStorage and refresh the genre list
                     localStorage.removeItem("genres")
-                    await getGenres()
+                    getGenres()
 
                     // Clear form input fields
                     document.getElementById('genreTitle').value = ''
