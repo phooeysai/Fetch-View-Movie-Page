@@ -494,7 +494,7 @@
 
                     // Remove genres from localStorage and refresh the genre list
                     localStorage.removeItem("genres")
-                    await (getGenres)
+                    await getGenres()
 
                     // Clear form input fields
                     document.getElementById('genreTitle').value = ''
